@@ -1,3 +1,6 @@
+const URL_FETCH_STORY_BY_ID = `https://hacker-news.firebaseio.com/v0/item/{id}.json`;
+const URL_FETCH_TOP_STORIES = 'https://hacker-news.firebaseio.com/v0/topstories.json';
+
 function fetchGetRequest(url) {
   return fetch(url, {})
       .then(response => {
@@ -17,9 +20,9 @@ function fetchGetRequest(url) {
 }
 
 export function fetchTopStories() {
-  return fetchGetRequest('https://hacker-news.firebaseio.com/v0/topstories.json');
+  return fetchGetRequest(URL_FETCH_TOP_STORIES);
 }
 
 export function fetchStoryById(id) {
-  return fetchGetRequest(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
+  return fetchGetRequest(URL_FETCH_STORY_BY_ID.replace('{id}', id));
 }

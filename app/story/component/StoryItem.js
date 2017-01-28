@@ -23,9 +23,9 @@ class StoryItem extends Component {
 
     return (
       <View style={styles.container}>
-        <Text>{story.get('title') || 'Loading...'}</Text>
-        <Text>{story.get('by') || 'Loading...'}</Text>
-        <Text>{story.get('time') || 'Loading...'}</Text>
+        <Text style={styles.title}>{story.get('title') || 'Loading...'}</Text>
+        <Text style={styles.author}>{story.get('by') || 'Loading...'}</Text>
+        <Text style={styles.time}>{story.get('time') || 'Loading...'}</Text>
       </View>
     );
   }
@@ -40,7 +40,21 @@ StoryItem.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 10,
   },
+  title: {
+    fontWeight: '600',
+    marginBottom: 4,
+  },
+  author: {
+    fontSize: 10,
+  },
+  time: {
+    fontSize: 10,
+  }
 });
 
 export default connect((store, props) => {
