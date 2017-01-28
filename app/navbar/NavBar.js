@@ -5,6 +5,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
+
 export default class MyComponent extends Component {
   render() {
     return (
