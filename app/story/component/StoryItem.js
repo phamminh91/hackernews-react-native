@@ -2,18 +2,29 @@ import {Map} from 'immutable';
 import React, { Component, PropTypes } from 'react';
 import {map} from 'react-immutable-proptypes';
 import {
-  View,
-  Text,
   StyleSheet,
+  Text,
+  TouchableHighlight,
+  View,
 } from 'react-native';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 
 import {loadStory} from '../action';
 
 
 class StoryItem extends Component {
+  constructor(props) {
+    super(props);
+    this.handlePress = this.handlePress.bind(this);
+  }
+
   componentWillMount() {
     this.props.loadStory(this.props.id);
+  }
+
+  shouldComponentUpdate(nProps) {
+    return this.props.story !== nProps.story;
   }
 
   render() {
@@ -22,12 +33,21 @@ class StoryItem extends Component {
     } = this.props;
 
     return (
-      <View style={styles.container}>
-        <Text style={styles.title}>{story.get('title') || 'Loading...'}</Text>
-        <Text style={styles.author}>{story.get('by') || 'Loading...'}</Text>
-        <Text style={styles.time}>{story.get('time') || 'Loading...'}</Text>
-      </View>
+        <TouchableHighlight onPress={this.handlePress}>
+          <View style={styles.container}>
+            <Text style={styles.title}>{story.get('title') || 'Loading...'}</Text>
+            <Text style={styles.author}>{story.get('by') || 'Loading...'}</Text>
+            <Text style={styles.time}>{story.get('time') || 'Loading...'}</Text>
+          </View>
+        </TouchableHighlight>
     );
+  }
+
+  handlePress() {
+    const story = this.props.story;
+    if (story) {
+      Actions.storyView({url: story.get('url')});
+    }
   }
 }
 

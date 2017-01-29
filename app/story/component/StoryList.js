@@ -27,7 +27,7 @@ class StoryList extends Component {
   }
 
   render() {
-    const topTenStories = this.props.story.get('topStories').slice(0, 20).toJS();
+    const topTenStories = this.props.story.get('topStories').slice(0, 10).toJS();
 
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
