@@ -7,13 +7,12 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 
-import StoryItem from './StoryItem';
+import MovieListItem from './MovieListItem';
 import {
-  loadTopStories,
 } from '../action';
 
 
-class StoryList extends Component {
+class NowShowlingList extends Component {
   constructor(props) {
     super(props);
   }
@@ -27,7 +26,7 @@ class StoryList extends Component {
   }
 
   render() {
-    const topTenStories = this.props.story.get('topStories').slice(0, 10).toJS();
+    const topTenStories = this.props.story.get('topStories').toJS();
 
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
@@ -35,15 +34,14 @@ class StoryList extends Component {
 
     const rows = ds.cloneWithRows(topTenStories);
     return (
-      <View style={styles.container}>
-        <ListView
-            dataSource={rows}
-            renderRow={storyId => <StoryItem id={storyId} />}
-            enableEmptySections={true}
-            initialListSize={10}
-            automaticallyAdjustContentInsets={false}
-        />
-      </View>
+        <View style={styles.container}>
+          <ListView
+              dataSource={rows}
+              renderRow={storyId => <StoryItem id={storyId} />}
+              enableEmptySections={true}
+              initialListSize={10}
+          />
+        </View>
     );
   }
 }

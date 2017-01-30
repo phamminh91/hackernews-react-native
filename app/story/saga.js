@@ -1,5 +1,4 @@
-import {takeEvery} from 'redux-saga';
-import {call, fork, put} from 'redux-saga/effects';
+import {call, fork, put, takeEvery} from 'redux-saga/effects';
 
 import * as action from './action';
 import * as actionTypes from './actionType';
@@ -16,7 +15,7 @@ function* loadTopStories() {
 }
 
 function* watchLoadTopStories() {
-  yield* takeEvery(actionTypes.LOAD_TOP_STORIES, loadTopStories);
+  yield takeEvery(actionTypes.LOAD_TOP_STORIES, loadTopStories);
 }
 
 function* loadStory({id}) {
@@ -29,7 +28,7 @@ function* loadStory({id}) {
 }
 
 function* watchLoadStory() {
-  yield* takeEvery(actionTypes.LOAD_STORY, loadStory);
+  yield takeEvery(actionTypes.LOAD_STORY, loadStory);
 }
 
 export default function*() {

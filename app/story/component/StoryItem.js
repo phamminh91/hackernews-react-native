@@ -60,10 +60,7 @@ StoryItem.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 10,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 10,
+    padding: 10,
   },
   title: {
     fontWeight: '600',

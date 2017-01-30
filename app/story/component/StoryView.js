@@ -9,7 +9,7 @@ export default class StoryView extends Component {
     return (
         <WebView
             source={{uri: this.props.url}}
-            style={{marginTop: 20}}
+            style={{}}
         />
     );
   }
